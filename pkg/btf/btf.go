@@ -322,8 +322,6 @@ func processMembers(
 	var lastError *resolveError
 	for _, member := range members {
 		if len(member.Name) == 0 { // anonymous struct/union, fallthrough
-			btfArgs[i].Offset = member.Offset.Bytes()
-			btfArgs[i].IsInitialized = uint16(1)
 			lastTy, err := ResolveBTFPath(btfArgs, member.Type, pathToFound, i)
 			if err != nil {
 				// Propagate the deepest error for both resolve and non-resolve error.
